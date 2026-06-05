@@ -73,17 +73,17 @@ window.addEventListener("FeedRequest", function (evt) {
 
 
 window.addEventListener("ThreadsFilter.Enable", function (evt) {
-    chrome.storage.sync.set({enabled: true}, function () {});
+    browser.storage.sync.set({enabled: true}, function () {});
 });
 
 window.addEventListener("ThreadsFilter.Disable", function (evt) {
-    chrome.storage.sync.set({enabled: false}, function () {});
+    browser.storage.sync.set({enabled: false}, function () {});
 });
 
 window.addEventListener("ThreadsFilter.RegisterParticipant", function (evt) {
     // The user read the IRB and accepted to join
-    chrome.storage.sync.set({user_id: evt.detail.user_id}, function () {
-        chrome.storage.sync.set({["enabled"]: true});
+    browser.storage.sync.set({user_id: evt.detail.user_id}, function () {
+        browser.storage.sync.set({["enabled"]: true});
         const event = new CustomEvent("ThreadsFilter.RegisterParticipantDone", {bubbles:true, composed:true});
         window.dispatchEvent(event);
     }); 

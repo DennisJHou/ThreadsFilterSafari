@@ -2,7 +2,7 @@ class MainHttpClient {
 
     constructor(host) {
         this.host = host;
-        this.version = chrome.runtime.getManifest().version;
+        this.version = browser.runtime.getManifest().version;
     }
 
     getUrl(path) {

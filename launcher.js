@@ -1,7 +1,7 @@
 const eventsManager = new EventsManager();
 if (location.href.includes("threads.com") || location.href.includes("threads.net")) {
     // We are on Threads
-    chrome.storage.sync.get(['user_id', 'show_scores', 'enabled'], function (items) {
+    browser.storage.sync.get(['user_id', 'show_scores', 'enabled'], function (items) {
         let user_id = items.user_id;
         if (!items.enabled) {
             console.log("Extension is disabled.");
@@ -36,7 +36,7 @@ function init(user_id) {
     // Inject the script in the page space
     ////////////////////////////////////////
     const s = document.createElement('script');
-    s.src = chrome.runtime.getURL('injected.js');
+    s.src = browser.runtime.getURL('injected.js');
     s.onload = function () {
         this.remove();
     };

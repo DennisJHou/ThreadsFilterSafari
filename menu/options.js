@@ -1,12 +1,12 @@
 $("#show_scores").change(function() {
     if(this.checked)
-        chrome.storage.sync.set({show_scores: true});
+        browser.storage.sync.set({show_scores: true});
     else
-        chrome.storage.sync.set({show_scores: false});
+        browser.storage.sync.set({show_scores: false});
 });
 
 
-chrome.storage.sync.get(['show_scores'], function (items) {
+browser.storage.sync.get(['show_scores'], function (items) {
     let show_scores = items.show_scores;
     let active = false;
     if (show_scores) {

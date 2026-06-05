@@ -15,7 +15,7 @@
    "content_scripts": [ {
       "matches": [ "*://*.threads.com/*", "*://*.threads.net/*", "*://mil.psy.ntu.edu.tw/*" ],
       "run_at": "document_start",
-      "js": [ "libs/jquery.min.js", "config.js", "libs/client.js", "libs/utils.js", "libs/timeme.min.js", "events.js", "logic.js", "launcher.js" ],
+      "js": [ "libs/browser-polyfill.min.js", "libs/jquery.min.js", "config.js", "libs/client.js", "libs/utils.js", "libs/timeme.min.js", "events.js", "logic.js", "launcher.js" ],
       "css": [ "static/style.css" ]
    } ],
    "web_accessible_resources": [ {
@@ -26,6 +26,11 @@
       "service_worker": "service_worker.js",
       "type": "module"
    },
-   "permissions": [ "storage", "alarms" ]
+   "permissions": [ "storage", "alarms" ],
+   "browser_specific_settings": {
+      "safari": {
+         "strict_min_version": "15.4"
+      }
+   }
 }
 

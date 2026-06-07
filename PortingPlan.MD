@@ -56,7 +56,7 @@ ThreadsFilterSafari/
 ### 完整的 `chrome.*` 使用清單（已用 grep 全面盤點）
 
 | 檔案 | 行 | 呼叫 | 執行 context |
-|---------------|---------------|---------------|----------------------------|
+|----|----|----|----|
 | `service_worker.js` | 3,5,12,13,15,17,31 | `chrome.runtime.onInstalled`, `chrome.tabs.create`, `chrome.alarms.*`, `chrome.storage.sync.*` | background |
 | `launcher.js` | 4,39 | `chrome.storage.sync.get`, `chrome.runtime.getURL` | content script |
 | `logic.js` | 76,80,85,86 | `chrome.storage.sync.set` ×4 | content script |
@@ -103,7 +103,7 @@ TestFlight 即可 - 這個 repo（已改好的原始碼）作為轉換來源
 ## 執行方式總覽（每個 Step = 一個新 Session → push）
 
 | Phase | Step | 標題 | 誰執行 | 難度 | 複雜度 | 建議模型 |
-|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+|----|----|----|----|----|----|----|
 | A | 1 | 清理 repo + 加入 polyfill | 🤖 Claude | 低 | 低 | Haiku 4.5 |
 | A | 2 | 修改 manifest.json | 🤖 Claude | 低 | 低 | Haiku 4.5 |
 | A | 3 | content script `chrome.*`→`browser.*` | 🤖 Claude | 低 | 中 | Sonnet 4.6 |
@@ -379,7 +379,7 @@ threads.net 上出現這些錯誤：<貼上 console>。 \> 對照 PortingPlan.MD
 ## 可行性評估 Feasibility
 
 | 面向 | 評估 |
-|------------------------------------|------------------------------------|
+|----|----|
 | XHR/Fetch hooking | ✅ 可行 —— injected.js 注入頁面 context 的模式在 Safari 有效 |
 | `chrome.*` API 相容 | ✅ polyfill + `browser.*` 即可，已盤點全部呼叫點 |
 | Service worker | ✅ Safari 16+ 支援 MV3 service worker |

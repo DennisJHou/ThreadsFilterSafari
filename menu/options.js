@@ -6,7 +6,7 @@ $("#show_scores").change(function() {
 });
 
 
-browser.storage.sync.get(['show_scores'], function (items) {
+browser.storage.sync.get(['show_scores']).then(function (items) {
     let show_scores = items.show_scores;
     let active = false;
     if (show_scores) {

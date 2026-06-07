@@ -41,8 +41,14 @@ class MainHttpClient {
 
     logEvent(eventType, params = {}) {
         params['event_type'] = eventType;
-        //console.log("Logging:", params)
-        this.postRequest("/event", params);
+        let body = this.makeRequestBody(params);
+        let formData = new URLSearchParams(body).toString();
+        fetch(this.getUrl("/event"), {
+            method: "POST",
+            headers: {"Content-Type": "application/x-www-form-urlencoded"},
+            body: formData,
+            keepalive: true
+        }).catch(err => console.log("/event fetch error:", err));
     }
 
     saveSurveyAnswer(params = {}, callback = function(d) {}) {

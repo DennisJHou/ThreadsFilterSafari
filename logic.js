@@ -73,18 +73,18 @@ window.addEventListener("FeedRequest", function (evt) {
 
 
 window.addEventListener("ThreadsFilter.Enable", function (evt) {
-    browser.storage.sync.set({enabled: true}, function () {});
+    browser.storage.sync.set({enabled: true});
 });
 
 window.addEventListener("ThreadsFilter.Disable", function (evt) {
-    browser.storage.sync.set({enabled: false}, function () {});
+    browser.storage.sync.set({enabled: false});
 });
 
 window.addEventListener("ThreadsFilter.RegisterParticipant", function (evt) {
     // The user read the IRB and accepted to join
-    browser.storage.sync.set({user_id: evt.detail.user_id}, function () {
+    browser.storage.sync.set({user_id: evt.detail.user_id}).then(function () {
         browser.storage.sync.set({["enabled"]: true});
         const event = new CustomEvent("ThreadsFilter.RegisterParticipantDone", {bubbles:true, composed:true});
         window.dispatchEvent(event);
-    }); 
+    });
 }, false);

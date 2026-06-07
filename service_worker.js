@@ -10,7 +10,7 @@ browser.runtime.onInstalled.addListener(({reason}) => {
 });
 
 function checkIfEnabled() {
-    browser.storage.sync.get(['user_id'], function (result) {
+    browser.storage.sync.get(['user_id']).then(function (result) {
         if (result) {
             console.log(result['user_id']);
 

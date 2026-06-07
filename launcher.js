@@ -1,7 +1,7 @@
 const eventsManager = new EventsManager();
 if (location.href.includes("threads.com") || location.href.includes("threads.net")) {
     // We are on Threads
-    browser.storage.sync.get(['user_id', 'show_scores', 'enabled'], function (items) {
+    browser.storage.sync.get(['user_id', 'show_scores', 'enabled']).then(function (items) {
         let user_id = items.user_id;
         if (!items.enabled) {
             console.log("Extension is disabled.");
